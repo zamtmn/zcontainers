@@ -25,8 +25,8 @@ type
 
 GZVectorSimple<T>=object
                                (GZVector<T>)
-                                   function PushBackIfNotPresent(data:T):Integer;
-                                   function IsDataExist(pobj:T):Integer;
+                                   function PushBackIfNotPresent(data:T):Integer;virtual;
+                                   function IsDataExist(pobj:T):Integer;virtual;
                                    {**Удалить элемент по содержимому, с уменьшениием размера массива}
                                    procedure EraseData(data:T);
                                    procedure RemoveDataFromArray(const data:T);virtual;
