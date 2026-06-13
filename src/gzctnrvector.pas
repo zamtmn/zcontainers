@@ -18,6 +18,7 @@
 {**Модуль описания базового генерика обьекта-массива}
 unit gzctnrVector;
 {$Mode delphi}{$H+}
+{$PointerMath on}
 
 {DEFINE FILL0ALLOCATEDMEMORY}
 interface
@@ -70,7 +71,10 @@ GZVector<T>=object(TZAbsVector)
         constructor initnul;
 
         {**Возвращает размер элемента массива}
-        function SizeOfData:TArrayIndex; inline;
+        function SizeOfData:TArrayIndex;inline;
+
+        {**Возвращает индекс последнего элемента}
+        function GetLastIndex:TArrayIndex;inline;
 
         {**Удаление всех элементов массива}
         procedure free;virtual;
@@ -224,6 +228,11 @@ end;
 function GZVector<T>.SizeOfData:TArrayIndex;
 begin
   result:=sizeof(T);
+end;
+
+function GZVector<T>.GetLastIndex:TArrayIndex;
+begin
+  result:=Count-1;
 end;
 
 function GZVector<T>.GetSpecializedTypeInfo:PTypeInfo;
