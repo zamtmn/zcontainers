@@ -25,7 +25,7 @@ uses
 type
 TMyMapGenOld <TKey, TValue, TCompare> = class( TMap<TKey, TValue, TCompare>);
 TMyMapGen <TKey,TValue> = class( TDictionary<TKey,TValue>)
-  function MyGetValue(const key:TKey):TValue;inline;
+  function MyGetValue(const key:TKey):TValue;inline;overload;
  {$If FPC_FULLVERSION <= 30204}
   function GetMutableValue(const AKey: TKey): PValue; inline;
   function TryGetMutableValue(const AKey: TKey; out APValue: PValue): Boolean;
@@ -42,7 +42,7 @@ TMyMapCounter<TKey>=class(TMyGenMapCounter<TKey,SizeUInt>);
 
 GKey2DataMap <TKey, TValue> = class(TMyMapGen<TKey, TValue>)
         procedure RegisterKey(const key:TKey; const Value:TValue);
-        function MyGetValue(const key:TKey; out Value:TValue):boolean;
+        function MyGetValue(const key:TKey; out Value:TValue):boolean;overload;
         function MyContans(const key:TKey):boolean;
 end;
   GKey2DataMapOld <TKey, TValue, TCompare> = class(TMap<TKey, TValue, TCompare>)
